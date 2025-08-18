@@ -2,7 +2,7 @@
 #include "relu.h"
 #include <stdlib.h>
 int main(){
-  printf("Valid World!\n");
+  printf("ReLU Test Functions for CNN development\n");
   double data[] = {1.0, -2.0, 3.0, -4.0, 0.5};
   int rows = 3, cols = 3;
   double *matrix = malloc(rows * cols * sizeof(double));
