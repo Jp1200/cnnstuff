@@ -65,6 +65,25 @@ void maxpool2d(float input[IMG_SIZE-2][IMG_SIZE-2], float output[(IMG_SIZE-2)/PO
     }
   }
 }
+// Turn the [x][x] matrix into 1D
+void flatten(float input[(IMG_SIZE-2)/POOL_SIZE][(IMG_SIZE-2)/POOL_SIZE], float output[((IMG_SIZE-2)/POOL_SIZE))*((IMG_SIZE-2)/POOL_SIZE)]){
+  int inx = 0;
+  for(int i = 0;i < (IMG_SIZE-2)/POOL_SIZE; i++){
+    for (int j = 0;j < (IMG_SIZE-2)/POOL_SIZE; j++) {
+      output[inx++] = input[i][j];
+    }
+  }
+}
+//Forward pass for fully connected layers
+void fc_forward(float input[((IMG_SIZE-2)/POOL_SIZE)*((IMG_SIZE-2)/POOL_SIZE)], float output[FC_SIZE],float weights[FC_SIZE][((IMG_SIZE-2)/POOL_SIZE)*((IMG_SIZE-2)/POOL_SIZE)], float bias[FC_SIZE]){
+  for (int i = 0; i < FC_SIZE; i++) {
+    float sum = bias[i];
+    for (int j = 0;j < ((IMG_SIZE-2)/POOL_SIZE)*((IMG_SIZE-2)/POOL_SIZE);j++) {
+      sum += weights[i][j]*input[j];
+    }
+    output[i] = relu(sum);
+  }
+}
 int main(){
   srand(time(0));
   printf("ReLU Test Functions for CNN development\n");
