@@ -1,7 +1,7 @@
 TARGET = main
 
 all:
-	clang *.c -o $(TARGET)
+	clang main.c -o $(TARGET)
 
 clean:
 	rm -f $(TARGET)
