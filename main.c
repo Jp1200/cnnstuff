@@ -129,7 +129,7 @@ int main(){
     float fc_bias[FC_SIZE];
     for(int i = 0; i < FC_SIZE; i++) {
         fc_bias[i] = rand_float();
-        for(int j = 0; j < ((IMG_SIZE-2)/POOL_SIZE)*((IMG_SIZE-2)/POOL_SIZE); j++)
+        for(int j = 0; j < ((out_size)/POOL_SIZE)*((IMG_SIZE-2)/POOL_SIZE); j++)
             fc_weights[i][j] = rand_float();
     }
   float fc_out[FC_SIZE];
